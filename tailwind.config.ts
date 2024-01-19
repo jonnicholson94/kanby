@@ -16,7 +16,7 @@ const config: Config = {
       success: "#008000",
       failed: "#C52828",
       darkFont: "#000",
-      ctaFont: "#fff",
+      ctaText: "#fff",
       purple: "#A58FAA",
       blue: "#A6D6D6",
       green: "#D5ECC2",
@@ -34,6 +34,11 @@ const config: Config = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
+    },
+    borderRadius: {
+      "sm": "5px",
+      "md": "10px",
+      "rnd": "50%"
     }
   },
   plugins: [],

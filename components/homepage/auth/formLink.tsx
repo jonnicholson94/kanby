@@ -7,6 +7,8 @@ type Props = {
 
 export default function FormLink({ content, toggle, setState }: Props) {
     return (
-        <button onClick={() => setState(toggle)}>{content}</button>
+        <div className="h-auto w-full mt-[15px]">
+            <button className="text-[12px] underline" type="button" onClick={() => setState(toggle)}>{content}</button>
+        </div>
     )
 }

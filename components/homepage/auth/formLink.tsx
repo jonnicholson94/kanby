@@ -1,6 +1,6 @@
 
 type Props = {
-    content: "Already got an account?" | "Not got an account?" | "Back to sign in"
+    content: "Already got an account?" | "Not got an account?" | "Back to sign in" | "Forgotten your password?"
     toggle: "register" | "sign in" | "forgot password"
     setState: React.Dispatch<React.SetStateAction<"register" | "sign in" | "forgot password">>
 }

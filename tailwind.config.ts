@@ -23,7 +23,8 @@ const config: Config = {
       salmon: "#FCD1D1",
       grey: "#687980",
       tertiaryBg: "#F8F9F6",
-      secondaryFont: "#CDCDCD"
+      secondaryFont: "#CDCDCD",
+      skeleton: "#e9e9e9",
     },
     screens: {
       'xs': "300px",

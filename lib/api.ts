@@ -1,4 +1,5 @@
 
+import type { ITask } from "./types/task";
 import type { IApiResponse } from "./types/api";
 
 import { supabase } from "./supabase";
@@ -54,6 +55,16 @@ class Api {
         return {
             data: `If it exists, we've sent a password reset to: ${email}`,
             error: null
+        }
+    }
+
+    async fetchTasks(): Promise<IApiResponse<ITask[]>> {
+
+        const { data, error } = await supabase.from("tasks").select("*")
+
+        return {
+            data, 
+            error
         }
     }
  

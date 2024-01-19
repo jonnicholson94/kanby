@@ -1,12 +1,12 @@
 
 export interface ITask {
     id: string 
-    userId: string 
+    user_id: string 
     title: string
-    description: string 
+    description: string
     subTasks: ISubTask[]
     comments: IComment[]
-    status: TaskStatus
+    status: TaskStatus 
     category: TaskCategory
 }
 

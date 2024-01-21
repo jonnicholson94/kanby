@@ -1,5 +1,5 @@
 
-import { handleEmailValidation, handlePasswordValidation } from "@/lib/handleAuthErrors"; // Replace with the correct path
+import { handleEmailValidation, handlePasswordValidation } from "@/lib/handleValidation"; // Replace with the correct path
 
 describe('handleEmailValidation', () => {
   test('returns empty string for valid email', () => {

@@ -21,3 +21,15 @@ export const handlePasswordValidation = (value: string) => {
         return "Your password needs to be at least 6 characters long"
     }
 }
+
+export const handleLengthValidation = (value: string) => {
+
+    const valid = value.length > 0
+
+    if (valid) {
+        return ""
+    } else {
+        return "Please enter at least 1 character"
+    }
+
+}

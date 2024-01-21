@@ -1,5 +1,5 @@
 
-import type { ITask } from "./types/task";
+import type { ITask, TaskCategory, TaskStatus } from "./types/task";
 import type { IApiResponse } from "./types/api";
 
 import { supabase } from "./supabase";
@@ -66,6 +66,29 @@ class Api {
             data, 
             error
         }
+    }
+
+    async createTask(title: string, description: string, status: TaskStatus, category: TaskCategory): Promise<IApiResponse<string>> {
+
+        const { data, error } = await supabase.from("tasks").insert({
+            title: title,
+            description: description,
+            status: status,
+            category: category
+        })
+
+        if (error) {
+            return {
+                data: null,
+                error: error.message
+            }
+        }
+
+        return {
+            data: "Successfully created your task",
+            error: null
+        }
+
     }
  
 }

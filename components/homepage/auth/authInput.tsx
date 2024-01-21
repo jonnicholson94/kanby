@@ -1,8 +1,9 @@
 
 import { useState } from "react"
 
-import { handleEmailValidation, handlePasswordValidation } from "@/lib/handleAuthErrors"
-import AuthError from "./authError"
+import { handleEmailValidation, handlePasswordValidation } from "@/lib/handleValidation"
+
+import InputError from "@/components/ui/inputError"
 
 type Props = {
     label: string 
@@ -32,7 +33,7 @@ export default function AuthInput({ label, type, state, setState, placeholder }:
         <>
             <label className="h-auto w-full mt-[15px] text-[12px]">{label}</label>
             <input className={`h-[40px] w-full border ${error ? "border-failed" : "border-border"} px-[10px] rounded-sm active:border-active mt-[5px] placeholder:text-placeholder text-[14px]`} type={type} value={state} onChange={(e) => handleChange(e)} placeholder={placeholder} />
-            { error && <AuthError message={error} /> }
+            { error && <InputError message={error} /> }
         </>
     )
 }

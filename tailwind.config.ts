@@ -13,6 +13,7 @@ const config: Config = {
       primaryCta: "#000",
       border: "#EDEDED",
       active: "#2161DC",
+      hover: "#f9f9f9",
       success: "#008000",
       failed: "#C52828",
       darkFont: "#000",
@@ -25,6 +26,7 @@ const config: Config = {
       tertiaryBg: "#F8F9F6",
       secondaryFont: "#CDCDCD",
       skeleton: "#e9e9e9",
+      overlay: "#000"
     },
     screens: {
       'xs': "300px",

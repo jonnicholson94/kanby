@@ -6,7 +6,7 @@ import { supabase } from "../supabase"
 
 export async function useAuth() {
 
-    const router = useRouter()
+    const router = useRouter()    
 
     const [userSession, setUserSession] = useState<any>(null)
 

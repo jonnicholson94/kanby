@@ -90,6 +90,16 @@ class Api {
         }
 
     }
+
+    async fetchTask(id: string): Promise<IApiResponse<ITask[]>> {
+
+        const { data, error } = await supabase.from("tasks").select("*").eq("id", id)
+
+        return {
+            data: data,
+            error: error?.message
+        }
+    }
  
 }
 

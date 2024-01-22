@@ -30,7 +30,7 @@ export default function Dashboard() {
             <DashboardHeader />
             <DashboardFilter />
             { data?.data?.map(task => {
-                return <DashboardListItem key={task.id} title={task.title} status={task.status} category={task.category} />
+                return <DashboardListItem key={task.id} id={task.id} title={task.title} status={task.status} category={task.category} />
             })}
         </>
     )

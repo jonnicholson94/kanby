@@ -1,7 +1,7 @@
 
 import { render, screen } from "@testing-library/react"
 
-import Title from "../../../components/homepage/title"
+import Title from "./title"
 
 test("heading renders with correct content", () => {
     render(<Title />)

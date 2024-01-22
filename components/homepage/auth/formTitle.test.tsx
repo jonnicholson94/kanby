@@ -7,9 +7,9 @@ import FormTitle from "@/components/homepage/auth/formTitle"
 
 test("Tests if passed in title prop renders correctly", () => {
 
-    render(<FormTitle title="Sign in to your account" />)
+    render(<FormTitle title="Sign in to your Kanby account" />)
 
-    const element = screen.getByText("Sign in to your account")
+    const element = screen.getByText("Sign in to your Kanby account")
 
     expect(element).toBeDefined()
 

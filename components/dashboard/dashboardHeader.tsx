@@ -22,6 +22,7 @@ export default function DashboardHeader() {
                     <img className="mr-[5px]" src="/assets/plus-cta.svg" alt="A plus icon to indicate a task can be created" />
                     <p className="h-auto flex-grow text-[12px] font-bold">Create task</p>
                 </button>
+                
             </div>
         </header>
     )

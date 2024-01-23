@@ -1,6 +1,8 @@
 
 import { useState, useMemo } from "react";
 import { toast } from "sonner";
+import { useQueryClient } from "react-query";
+import { useRouter } from "next/router";
 
 import { api } from "@/lib/api";
 
@@ -10,9 +12,9 @@ import { TaskCategory, TaskStatus } from "@/lib/types/task";
 
 import { calculateStatus, calculateCategory } from "@/lib/helpers";
 
-import Link from "next/link";
 import SelectPopup from "../ui/selectPopup";
 import BackToDashboard from "../ui/backToDashboard";
+import AlertDialog from "../ui/alertDialog";
 
 type Props = {
     id: string
@@ -21,6 +23,9 @@ type Props = {
 }
 
 export default function TaskHeader({ id, status, category }: Props) {
+
+    const router = useRouter()
+    const queryClient = useQueryClient()
 
     const statusSrc = useMemo(() => {
         return calculateStatus(status)
@@ -67,6 +72,20 @@ export default function TaskHeader({ id, status, category }: Props) {
         }
     }
 
+    const handleDelete = async () => {
+
+        const { data, error } = await api.deleteTask(id)
+
+        if (data) {
+            router.push("/dashboard")
+            await queryClient.invalidateQueries("tasks")
+            toast.success(data)
+        } else {
+            toast.error(error)
+        }
+
+    }
+
     return (
         <div className="h-[60px] w-full border-b border-border flex items-center justify-start px-[20px]">
             <div className="h-auto flex-grow flex items-center justify-start">
@@ -75,6 +94,9 @@ export default function TaskHeader({ id, status, category }: Props) {
             <div className="h-auto flex-grow flex items-center justify-end">
                 <SelectPopup current={currentStatus} options={statusOptions} handleChange={handleCurrentStatusChange} testId="status-popup" />
                 <SelectPopup current={currentCategory} options={categoryOptions} handleChange={handleCurrentCategoryChange} testId="category-popup" />
+                <AlertDialog title="Are you sure you want to delete this task?" description="Once you do, you won't be able to get it back." handleConfirm={handleDelete}>
+                    <img src="/assets/delete.svg" alt="A trash can to indicate a task can be deleted" />
+                </AlertDialog>
             </div>
         </div>
     )

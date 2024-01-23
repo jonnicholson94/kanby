@@ -199,6 +199,23 @@ class Api {
             error: null
         }
     }
+
+    async deleteTask(id: string) {
+
+        const { data, error } = await supabase.from("tasks").delete().eq("id", id)
+
+        if (error) {
+            return {
+                data: null,
+                error: error.message
+            }
+        }
+
+        return {
+            data: "Successfully deleted the task",
+            error: null
+        }
+    }
  
 }
 

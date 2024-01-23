@@ -8,6 +8,8 @@ export const calculateStatus = (status: TaskStatus) => {
             return "/assets/in-progress.svg"
         case "Completed":
             return "/assets/completed.svg"
+        case "Cancelled": 
+            return "/assets/cancelled.svg"
     }
 }
 

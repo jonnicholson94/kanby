@@ -1,16 +1,20 @@
 
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 
 import { useRouter } from "next/router"
 import { useQuery } from "react-query"
 
-import { useAuth } from "@/lib/hooks/useAuth"
+import useAuth from "@/lib/hooks/useAuth"
 import { api } from "@/lib/api"
 
 import TaskHeader from "@/components/task/taskHeader"
 import TaskLoader from "@/components/task/taskLoader"
 import TaskTitle from "@/components/task/taskTitle"
 import TaskDescription from "@/components/task/taskDescription"
+import NoTaskFound from "@/components/task/noTaskFound"
+import Divider from "@/components/ui/divider"
+import SubTasks from "@/components/task/subTasks"
+import TaskComments from "@/components/task/taskComments"
 
 export default function Task() {
 
@@ -29,15 +33,19 @@ export default function Task() {
     }
 
     if (!task || data?.data?.length === 0) {
-
+        return <NoTaskFound />
     }
 
     return (
         <>
-            <TaskHeader />
+            <TaskHeader id={task!.id} status={task!.status} category={task!.category} />
             <div className="h-auto w-full flex items-center justify-center flex-col p-[50px]">
-                <TaskTitle value={task!.title} handleBlur={() => {}} />
-                <TaskDescription value={task!.description} handleBlur={() => {}} />
+                <TaskTitle id={task!.id} value={task!.title} />
+                <TaskDescription id={task!.id} value={task!.description} />
+                <Divider />
+                <SubTasks id={task!.id} tasks={task!.subTasks} />
+                <Divider />
+                <TaskComments id={task!.id} comments={task!.comments} />
             </div>
         </>
     )

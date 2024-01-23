@@ -4,8 +4,8 @@ export interface ITask {
     user_id: string 
     title: string
     description: string
-    subTasks: ISubTask[]
-    comments: IComment[]
+    subTasks: string | null 
+    comments: string | null
     status: TaskStatus 
     category: TaskCategory
 }
@@ -22,6 +22,8 @@ export interface IComment {
     timestamp: string 
 }
 
-export type TaskStatus = "Backlog" | "In progress" | "Completed"
+export type TaskStatus = "Backlog" | "In progress" | "Completed" | "Cancelled"
 
 export type TaskCategory = "General" | "Health" | "Learning" | "Life" | "Work"
+
+export type FilterOptions = "Backlog" | "In progress" | "All"

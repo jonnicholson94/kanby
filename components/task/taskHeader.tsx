@@ -1,31 +1,76 @@
-import Link from "next/link";
-import SelectPopup from "../ui/selectPopup";
+
+import { useState, useMemo } from "react";
+import { toast } from "sonner";
+
+import { api } from "@/lib/api";
 
 import { statusOptions } from "@/lib/options";
 import { categoryOptions } from "@/lib/options";
+import { TaskCategory, TaskStatus } from "@/lib/types/task";
 
-export default function TaskHeader() {
+import { calculateStatus, calculateCategory } from "@/lib/helpers";
 
-    const currentStatus = {
-        image: "/assets/backlog.svg",
-        content: "Backlog"
+import Link from "next/link";
+import SelectPopup from "../ui/selectPopup";
+import BackToDashboard from "../ui/backToDashboard";
+
+type Props = {
+    id: string
+    status: TaskStatus
+    category: TaskCategory
+}
+
+export default function TaskHeader({ id, status, category }: Props) {
+
+    const statusSrc = useMemo(() => {
+        return calculateStatus(status)
+    }, [status]) 
+
+    const categorySrc = useMemo(() => {
+        return calculateCategory(category)
+    }, [category])
+
+    const [currentStatus, setCurrentStatus] = useState({
+        image: statusSrc,
+        content: status
+    })
+
+    const [currentCategory, setCurrentCategory] = useState({
+        image: categorySrc,
+        content: category
+    })
+
+    const handleCurrentStatusChange = async (image: string, content: string) => {
+
+        setCurrentStatus({
+            image: image,
+            content: content as TaskStatus
+        })
+
+        const { data, error } = await api.updateStatus(id, content as TaskStatus)
+
+        if (error) {
+            toast.error(error)
+        }
+
     }
+    const handleCurrentCategoryChange = async (image: string, content: string) => {
+        setCurrentCategory({
+            image: image,
+            content: content as TaskCategory
+        })
 
-    const currentCategory = {
-        image: "/assets/general.svg",
-        content: "General"
+        const { data, error } = await api.updateCategory(id, content as TaskCategory)
+
+        if (error) {
+            toast.error(error)
+        }
     }
-
-    const handleCurrentStatusChange = () => {}
-    const handleCurrentCategoryChange = () => {}
 
     return (
         <div className="h-[60px] w-full border-b border-border flex items-center justify-start px-[20px]">
             <div className="h-auto flex-grow flex items-center justify-start">
-                <Link className="h-auto flex items-center justify-center" href="/dashboard">
-                    <img className="h-[18px] w-[18px] mr-[5px]" src="/assets/arrow-left.svg" alt="An arrow pointing left, suggesting the user can go backwards" />
-                    <p>Go back</p>
-                </Link>
+                <BackToDashboard />
             </div>
             <div className="h-auto flex-grow flex items-center justify-end">
                 <SelectPopup current={currentStatus} options={statusOptions} handleChange={handleCurrentStatusChange} testId="status-popup" />

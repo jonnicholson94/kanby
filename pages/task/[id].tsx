@@ -15,6 +15,7 @@ import NoTaskFound from "@/components/task/noTaskFound"
 import Divider from "@/components/ui/divider"
 import SubTasks from "@/components/task/subTasks"
 import TaskComments from "@/components/task/taskComments"
+import Head from "next/head"
 
 export default function Task() {
 
@@ -38,6 +39,9 @@ export default function Task() {
 
     return (
         <>
+            <Head>
+                <title>{task!.title} | Kanby</title>
+            </Head>
             <TaskHeader id={task!.id} status={task!.status} category={task!.category} />
             <div className="h-auto w-full flex items-center justify-center flex-col p-[50px]">
                 <TaskTitle id={task!.id} value={task!.title} />

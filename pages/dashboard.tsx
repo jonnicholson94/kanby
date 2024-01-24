@@ -1,5 +1,6 @@
 
 import { useMemo, useState } from "react"
+import Head from "next/head"
 
 import { useQuery } from "react-query"
 
@@ -14,7 +15,6 @@ import DashboardLoader from "@/components/dashboard/dashboardLoader"
 import EmptyDashboard from "@/components/dashboard/emptyDashboard"
 import DashboardFilter from "@/components/dashboard/dashboardFilter"
 import DashboardListItem from "@/components/dashboard/dashboardListItem"
-
 
 export default function Dashboard() {
 
@@ -43,7 +43,10 @@ export default function Dashboard() {
     }
 
     return (
-        <>
+        <>  
+            <Head>
+                <title>Your dashboard | Kanby</title>
+            </Head>
             <DashboardHeader />
             <DashboardFilter active={active} setActive={setActive} />
             { filteredData?.map(task => {

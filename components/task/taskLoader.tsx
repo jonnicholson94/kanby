@@ -1,9 +1,13 @@
 
 import Link from "next/link"
+import Head from "next/head"
 
 export default function TaskLoader() {
     return (
         <>
+            <Head>
+                <title>Loading your task | Kanby</title>
+            </Head>
             <div className="h-[60px] w-full border-b border-border flex items-center justify-start px-[20px]">
                 <div className="h-auto flex-grow flex items-center justify-start">
                     <Link className="h-auto flex items-center justify-center" href="/dashboard">

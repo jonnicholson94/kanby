@@ -4,10 +4,6 @@ import { useRouter } from "next/router"
 
 import { supabase } from "../supabase"
 
-interface AuthResult {
-    userSession: any;
-  }
-
 async function useAuth() {
 
     const router = useRouter()    

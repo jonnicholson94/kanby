@@ -95,7 +95,7 @@ export default function TaskHeader({ id, status, category }: Props) {
                 <SelectPopup current={currentStatus} options={statusOptions} handleChange={handleCurrentStatusChange} testId="status-popup" />
                 <SelectPopup current={currentCategory} options={categoryOptions} handleChange={handleCurrentCategoryChange} testId="category-popup" />
                 <AlertDialog title="Are you sure you want to delete this task?" description="Once you do, you won't be able to get it back." handleConfirm={handleDelete}>
-                    <img src="/assets/delete.svg" alt="A trash can to indicate a task can be deleted" />
+                    <img className="min-h-[15px] min-w-[15px]" src="/assets/delete.svg" alt="A trash can to indicate a task can be deleted" />
                 </AlertDialog>
             </div>
         </div>

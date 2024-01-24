@@ -34,7 +34,7 @@ export default function AlertDialog({ children, title, description, handleConfir
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="h-screen w-screen fixed top-0 left-0 bg-overlay opacity-70" />
-                <Dialog.Content className="h-auto xs:w-[95%] md:w-[40%] flex items-center justify-center flex-col bg-primaryBg fixed top-[30%] left-[30%] p-[30px] rounded-md">
+                <Dialog.Content className="h-auto xs:w-[95%] md:w-[40%] flex items-center justify-center flex-col bg-primaryBg fixed top-[30%] xs:left-[2.5%] md:left-[30%] p-[30px] rounded-md">
                     <Dialog.Title className="h-auto w-full text-[20px] font-bold">
                         {title}
                     </Dialog.Title>

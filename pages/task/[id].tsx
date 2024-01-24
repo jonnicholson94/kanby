@@ -43,7 +43,7 @@ export default function Task() {
                 <title>{task!.title} | Kanby</title>
             </Head>
             <TaskHeader id={task!.id} status={task!.status} category={task!.category} />
-            <div className="h-auto w-full flex items-center justify-center flex-col p-[50px]">
+            <div className="h-auto w-full flex items-center justify-center flex-col xs:p-[20px] md:p-[50px]">
                 <TaskTitle id={task!.id} value={task!.title} />
                 <TaskDescription id={task!.id} value={task!.description} />
                 <Divider />

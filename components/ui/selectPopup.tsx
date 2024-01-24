@@ -27,8 +27,8 @@ export default function SelectPopup({ current, options, handleChange, testId }: 
 
             <Select.Trigger className="mr-[10px]">
                 <div className="h-[35px] px-[10px] flex items-center justify-center border border-border rounded-sm" data-testid={testId}>
-                    <img className="h-[15px] w-[15px] mr-[5px]" src={current.image} alt="The current selected item's icon" />
-                    <p className="text-[12px]">{current.content}</p>
+                    <img className="h-[15px] w-[15px] md:mr-[5px]" src={current.image} alt="The current selected item's icon" />
+                    <p className="text-[12px] md:flex xs:hidden">{current.content}</p>
                 </div>
             </Select.Trigger>
 

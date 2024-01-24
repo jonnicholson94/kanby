@@ -15,12 +15,12 @@ export default function DashboardHeader() {
             </div>
             <div className="h-auto flex-grow flex items-center justify-end">
                 <Link href="/account" className="h-[35px] px-[10px] border border-border flex items-center justify-center rounded-sm text-[14px] mr-[10px]">
-                    <img className="mr-[5px]" src="/assets/profile.svg" alt="A person to indicate a profile link" />
-                    <p>Account</p>
+                    <img className="md:mr-[5px]" src="/assets/profile.svg" alt="A person to indicate a profile link" />
+                    <p className="xs:hidden md:flex">Account</p>
                 </Link>
                 <button className="h-[35px] px-[10px] bg-primaryCta flex items-center justify-center rounded-sm text-ctaText" onClick={showCreateTaskModal} data-testid="dashboard-header-button">
-                    <img className="mr-[5px]" src="/assets/plus-cta.svg" alt="A plus icon to indicate a task can be created" />
-                    <p className="h-auto flex-grow text-[12px] font-bold">Create task</p>
+                    <img className="md:mr-[5px]" src="/assets/plus-cta.svg" alt="A plus icon to indicate a task can be created" />
+                    <p className="h-auto xs:hidden md:flex flex-grow text-[12px] font-bold">Create task</p>
                 </button>
                 
             </div>
